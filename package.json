@@ -1,0 +1,20 @@
+{
+  "name": "com.smarto.utilities",
+  "version": "1.0.0",
+  "displayName": "Utilities",
+  "description": "Utilities such as reusable extension methods, components and prefabs developed for use in Unity projects by Smarto Club.",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "keywords": [
+    "extensions"
+  ],
+  "dependencies": {
+    "dev.yarnspinner.unity": "2.2.2"
+  },
+  "author": {
+    "name": "Smarto Club",
+    "email": "hello@smarto.club",
+    "url": "https://www.smarto.club/"
+  }
+}
