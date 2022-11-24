@@ -924,7 +924,10 @@ MonoBehaviour:
   closeButton: {fileID: 2885855082016120158}
   contentText: {fileID: 2885855082775251161}
   numberText: {fileID: 2885855082857373186}
-  content: {fileID: 11400000, guid: 5a70502d043ffa24ebbcb456c3717c73, type: 2}
+  content:
+  - Text: a
+  - Text: b
+  - Text: c
 --- !u!1 &2885855082857373184
 GameObject:
   m_ObjectHideFlags: 0

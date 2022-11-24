@@ -4,12 +4,23 @@ namespace Smarto.Components
     using UnityEngine.UI;
     using TMPro;
 
+    [System.Serializable]
+    public class ModalWindowContent
+    {
+        public string Text;
+    }
+
+    public class SimpleModalWindow : BaseModalWindow<ModalWindowContent>
+    {
+
+    }
+
     /// <summary>
     /// Base class for modal window in the Canvas with paginated content.
     /// Optionally, plays sounds if a RandomAudioQueue has been added.
     /// </summary>
     [RequireComponent(typeof(CanvasGroup))]
-    public partial class SimpleModalWindow : MonoBehaviour
+    public abstract partial class BaseModalWindow<T> : MonoBehaviour where T : ModalWindowContent
     {
         [Header("Configuration")]
         [Tooltip("If set to true, it will show the modal window on start.")]
@@ -28,8 +39,8 @@ namespace Smarto.Components
         [Header("Text")]
         [SerializeField] protected TextMeshProUGUI contentText;
         [SerializeField] protected TextMeshProUGUI numberText;
-        [Header("Content")]
-        [SerializeField] protected SimpleModalWindowContentList content;
+        [SerializeField] protected T[] content;
+        
         
         protected CanvasGroup canvasGroup;
         protected RandomAudioQueue randomAudioQueue;
@@ -105,7 +116,7 @@ namespace Smarto.Components
 
         public virtual void NextPage()
         {
-            if (contentIndex == content.Content.Length - 1)
+            if (contentIndex == content.Length - 1)
                 return;
             
             contentIndex++;
@@ -125,11 +136,11 @@ namespace Smarto.Components
 
         protected virtual void setPage()
         {
-            contentText.SetText(content.Content[contentIndex].Text);
-            numberText?.SetText($"{contentIndex + 1}/{content.Content.Length}");
+            contentText.SetText(content[contentIndex].Text);
+            numberText?.SetText($"{contentIndex + 1}/{content.Length}");
 
             previousButton?.gameObject.SetActive(contentIndex == 0 ? false : true);
-            nextButton?.gameObject.SetActive(contentIndex == content.Content.Length - 1 ? false : true);            
+            nextButton?.gameObject.SetActive(contentIndex == content.Length - 1 ? false : true);            
         }
     }
 }
