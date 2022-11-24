@@ -5,8 +5,13 @@ namespace Smarto.Components
     /// <summary>
     /// Scriptable object that holds the content of a modal window. Can be inherited to exted the content.
     /// </summary>
-    public class SimpleModalWindowContent : ScriptableObject
+    public class SimpleModalWindowContentList : ScriptableObject
     {
-        public string[] Content;
+        public SimpleModalWindowContent[] Content;
+    }
+
+    public class SimpleModalWindowContent
+    {
+        public string Text;
     }
 }

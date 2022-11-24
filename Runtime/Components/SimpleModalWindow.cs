@@ -29,7 +29,7 @@ namespace Smarto.Components
         [SerializeField] protected TextMeshProUGUI contentText;
         [SerializeField] protected TextMeshProUGUI numberText;
         [Header("Content")]
-        [SerializeField] protected SimpleModalWindowContent content;
+        [SerializeField] protected SimpleModalWindowContentList content;
         
         protected CanvasGroup canvasGroup;
         protected RandomAudioQueue randomAudioQueue;
@@ -125,7 +125,7 @@ namespace Smarto.Components
 
         protected virtual void setPage()
         {
-            contentText.SetText(content.Content[contentIndex]);
+            contentText.SetText(content.Content[contentIndex].Text);
             numberText?.SetText($"{contentIndex + 1}/{content.Content.Length}");
 
             previousButton?.gameObject.SetActive(contentIndex == 0 ? false : true);
