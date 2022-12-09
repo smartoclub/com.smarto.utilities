@@ -31,6 +31,14 @@ namespace Smarto.Extensions
         }
 
         /// <summary>
+        /// Returns true if the given line has a character name.
+        /// </summary>
+        public static bool HasName(this LocalizedLine line)
+        {
+            return line.CharacterName != null;
+        }
+
+        /// <summary>
         /// <para>Given a enumerable of metadata tags in the form "tag1:value1 tag2:value2" returns whether the enumerable contains the given tag.</para>
         /// <para>Works for node and line metadata.</para>
         /// </summary>
