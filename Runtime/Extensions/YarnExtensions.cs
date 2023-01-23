@@ -3,6 +3,7 @@ namespace Smarto.Extensions
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     using UnityEngine;
     using UnityEngine.Events;
@@ -82,6 +83,31 @@ namespace Smarto.Extensions
             }
     
             throw new System.ArgumentOutOfRangeException("Tag not found in given metadata.");     
-        }        
+        }
+
+        /// <summary>
+        /// Given a string enumerable and a VariableStorage, tries returns a random unvisited node. 
+        /// If all nodes are visited, then it will just return a random node.
+        /// </summary>
+        /// <param name="nodes">The list of nodes to check.</param>
+        /// <param name="variableStorage">The variable storage to check for visited data.</param>
+        /// <returns>The name of the randomly selected node.</returns>
+        public static string TryGetRandomUnvisitedNode(this IEnumerable<string> nodes, VariableStorageBehaviour variableStorage)
+        {
+            string[] unvistedNodes = nodes.Where(x => hasNotVisited(x)).ToArray();
+
+            return unvistedNodes.Length == 0 ? 
+                nodes.ToArray()[UnityEngine.Random.Range(0, nodes.Count())] : 
+                unvistedNodes[UnityEngine.Random.Range(0, unvistedNodes.Length)];
+
+            bool hasNotVisited(string node)
+            {
+                float visited;
+
+                variableStorage.TryGetValue<float>($"$Yarn.Internal.Visiting.{node}", out visited);
+
+                return visited == 0;
+            }
+        }
     }
 }

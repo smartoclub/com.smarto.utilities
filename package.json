@@ -1,6 +1,6 @@
 {
   "name": "com.smarto.utilities",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "displayName": "Utilities",
   "description": "Utilities such as reusable extension methods, components and prefabs developed for use in Unity projects by Smarto Club.",
   "documentationUrl": "https://github.com/aecanales/com.smarto.utilities",
